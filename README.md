@@ -1,5 +1,5 @@
 # Module 1: Tabular Data
-
+test
 ## Overview
 ANTS ARE COOL; WE ARE JOE ; JAKE IS CONFUSED, SO LOST
 This module explores high-performance workflows for working with larger-than-RAM tabular datasets using `duckdbfs` and DuckDB's streaming capabilities.
