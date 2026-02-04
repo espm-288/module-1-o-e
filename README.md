@@ -1,19 +1,3 @@
-# Module 1: Tabular Data
-
-## Overview
-ANTS ARE COOL; WE ARE JOE: JOES FOREVER
-This module explores high-performance workflows for working with larger-than-RAM tabular datasets using `duckdbfs` and DuckDB's streaming capabilities.
-
-
-
-#BLAH BLAH
-
-## Case Study: Global Supply Chains
-
-We analyze **EXIOBASE 3.8.1**, a global Multi-Regional Input-Output (MRIO) database that tracks economic transactions between sectors and regions, along with their environmental impacts.
-
-### Dataset Details
-
 Working with larger-than-RAM data using duckdbfs
 
 ## Overview
