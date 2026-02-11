@@ -5,6 +5,7 @@ author: "ESPM 288"
 format:
   html:
     embed-resources: true
+    df-print: kable
 ---
 
 ## Introduction
@@ -73,7 +74,7 @@ The dataset is large. We should filter *before* collecting any data into R.
 ```{r}
 exio |>
     filter(year == 2022, region == "US") |>
-    head() |> # view the first 6 rows
+    head() |>
     collect()
 ```
 
@@ -92,7 +93,12 @@ top5_us_sectors <- co2_data |>
     collect()
 
 # Display results
-print(top5_us_sectors)
+top5_us_sectors |>
+    knitr::kable(
+        caption = "Top 5 US Sectors by CO2 Emissions (2022)",
+        col.names = c("Sector", "Total CO2", "Unit"),
+        format.args = list(big.mark = ",")
+    )
 
 # Visualize the top 5 sectors
 y_unit <- if (nrow(top5_us_sectors) > 0 && !is.na(top5_us_sectors$unit[1])) {
@@ -130,7 +136,12 @@ top5_emitters_2022 <- co2_data |>
     collect()
 
 # Display results
-print(top5_emitters_2022)
+top5_emitters_2022 |>
+    knitr::kable(
+        caption = "Top 5 CO2 Emitting Countries (2022)",
+        col.names = c("Country", "Total CO2", "Unit"),
+        format.args = list(big.mark = ",")
+    )
 
 # Visualize the top 5 emitters
 ggplot(top5_emitters_2022, aes(x = reorder(region, total_co2), y = total_co2, fill = region)) +

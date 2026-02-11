@@ -2294,20 +2294,135 @@ $ matrix   &lt;chr&gt; &quot;F_satellite&quot;, &quot;F_satellite&quot;, &quot;F
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(stressor <span class="sc">%like%</span> <span class="st">&quot;%CO2%&quot;</span>) <span class="sc">|&gt;</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">|&gt;</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 8
-   stressor               region sector          value unit   year format matrix
-   &lt;chr&gt;                  &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; 
- 1 CO2 - combustion - air AT     Cultivation o… 2.27e8 kg     1995 ixi    F_sat…
- 2 CO2 - combustion - air AT     Cultivation o… 2.16e8 kg     1995 ixi    F_sat…
- 3 CO2 - combustion - air AT     Cultivation o… 1.01e8 kg     1995 ixi    F_sat…
- 4 CO2 - combustion - air AT     Cultivation o… 4.98e7 kg     1995 ixi    F_sat…
- 5 CO2 - combustion - air AT     Cultivation o… 1.10e7 kg     1995 ixi    F_sat…
- 6 CO2 - combustion - air AT     Cultivation o… 1.13e4 kg     1995 ixi    F_sat…
- 7 CO2 - combustion - air AT     Cultivation o… 1.74e6 kg     1995 ixi    F_sat…
- 8 CO2 - combustion - air AT     Cattle farming 6.79e7 kg     1995 ixi    F_sat…
- 9 CO2 - combustion - air AT     Pigs farming   4.87e7 kg     1995 ixi    F_sat…
-10 CO2 - combustion - air AT     Poultry farmi… 4.62e7 kg     1995 ixi    F_sat…</code></pre>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 6%">
+<col style="width: 35%">
+<col style="width: 11%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">stressor</th>
+<th style="text-align: left;">region</th>
+<th style="text-align: left;">sector</th>
+<th style="text-align: right;">value</th>
+<th style="text-align: left;">unit</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: left;">format</th>
+<th style="text-align: left;">matrix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CO2 - combustion - air</td>
+<td style="text-align: left;">AT</td>
+<td style="text-align: left;">Cultivation of wheat</td>
+<td style="text-align: right;">226849380.88</td>
+<td style="text-align: left;">kg</td>
+<td style="text-align: right;">1995</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_satellite</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CO2 - combustion - air</td>
+<td style="text-align: left;">AT</td>
+<td style="text-align: left;">Cultivation of cereal grains nec</td>
+<td style="text-align: right;">216344726.94</td>
+<td style="text-align: left;">kg</td>
+<td style="text-align: right;">1995</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_satellite</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CO2 - combustion - air</td>
+<td style="text-align: left;">AT</td>
+<td style="text-align: left;">Cultivation of vegetables, fruit, nuts</td>
+<td style="text-align: right;">101282174.32</td>
+<td style="text-align: left;">kg</td>
+<td style="text-align: right;">1995</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_satellite</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CO2 - combustion - air</td>
+<td style="text-align: left;">AT</td>
+<td style="text-align: left;">Cultivation of oil seeds</td>
+<td style="text-align: right;">49849518.52</td>
+<td style="text-align: left;">kg</td>
+<td style="text-align: right;">1995</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_satellite</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CO2 - combustion - air</td>
+<td style="text-align: left;">AT</td>
+<td style="text-align: left;">Cultivation of sugar cane, sugar beet</td>
+<td style="text-align: right;">10989674.73</td>
+<td style="text-align: left;">kg</td>
+<td style="text-align: right;">1995</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_satellite</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CO2 - combustion - air</td>
+<td style="text-align: left;">AT</td>
+<td style="text-align: left;">Cultivation of plant-based fibers</td>
+<td style="text-align: right;">11268.51</td>
+<td style="text-align: left;">kg</td>
+<td style="text-align: right;">1995</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_satellite</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CO2 - combustion - air</td>
+<td style="text-align: left;">AT</td>
+<td style="text-align: left;">Cultivation of crops nec</td>
+<td style="text-align: right;">1738733.64</td>
+<td style="text-align: left;">kg</td>
+<td style="text-align: right;">1995</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_satellite</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CO2 - combustion - air</td>
+<td style="text-align: left;">AT</td>
+<td style="text-align: left;">Cattle farming</td>
+<td style="text-align: right;">67919674.60</td>
+<td style="text-align: left;">kg</td>
+<td style="text-align: right;">1995</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_satellite</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CO2 - combustion - air</td>
+<td style="text-align: left;">AT</td>
+<td style="text-align: left;">Pigs farming</td>
+<td style="text-align: right;">48741831.97</td>
+<td style="text-align: left;">kg</td>
+<td style="text-align: right;">1995</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_satellite</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CO2 - combustion - air</td>
+<td style="text-align: left;">AT</td>
+<td style="text-align: left;">Poultry farming</td>
+<td style="text-align: right;">46173605.36</td>
+<td style="text-align: left;">kg</td>
+<td style="text-align: right;">1995</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_satellite</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </section>
@@ -2315,67 +2430,180 @@ $ matrix   &lt;chr&gt; &quot;F_satellite&quot;, &quot;F_satellite&quot;, &quot;F
 <h2 class="anchored" data-anchor-id="exercise-2-efficient-filtering">Exercise 2: Efficient Filtering</h2>
 <p>The dataset is large. We should filter <em>before</em> collecting any data into R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>exio <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2022</span>, region <span class="sc">==</span> <span class="st">&quot;US&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>() <span class="sc">|&gt;</span> <span class="co"># view the first 6 rows</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 8
-  stressor    region sector                      value unit   year format matrix
-  &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;                       &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; 
-1 Value Added US     Cultivation of paddy rice    750. M.EUR  2022 ixi    F_imp…
-2 Value Added US     Cultivation of wheat        2019. M.EUR  2022 ixi    F_imp…
-3 Value Added US     Cultivation of cereal gra…  7355. M.EUR  2022 ixi    F_imp…
-4 Value Added US     Cultivation of vegetables… 26878. M.EUR  2022 ixi    F_imp…
-5 Value Added US     Cultivation of oil seeds    5003. M.EUR  2022 ixi    F_imp…
-6 Value Added US     Cultivation of sugar cane…   290. M.EUR  2022 ixi    F_imp…</code></pre>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>exio <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2022</span>, region <span class="sc">==</span> <span class="st">&quot;US&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>() <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 7%">
+<col style="width: 40%">
+<col style="width: 11%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">stressor</th>
+<th style="text-align: left;">region</th>
+<th style="text-align: left;">sector</th>
+<th style="text-align: right;">value</th>
+<th style="text-align: left;">unit</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: left;">format</th>
+<th style="text-align: left;">matrix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Value Added</td>
+<td style="text-align: left;">US</td>
+<td style="text-align: left;">Cultivation of paddy rice</td>
+<td style="text-align: right;">749.9572</td>
+<td style="text-align: left;">M.EUR</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_impacts</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Value Added</td>
+<td style="text-align: left;">US</td>
+<td style="text-align: left;">Cultivation of wheat</td>
+<td style="text-align: right;">2019.0505</td>
+<td style="text-align: left;">M.EUR</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_impacts</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Value Added</td>
+<td style="text-align: left;">US</td>
+<td style="text-align: left;">Cultivation of cereal grains nec</td>
+<td style="text-align: right;">7354.9033</td>
+<td style="text-align: left;">M.EUR</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_impacts</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Value Added</td>
+<td style="text-align: left;">US</td>
+<td style="text-align: left;">Cultivation of vegetables, fruit, nuts</td>
+<td style="text-align: right;">26877.5032</td>
+<td style="text-align: left;">M.EUR</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_impacts</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Value Added</td>
+<td style="text-align: left;">US</td>
+<td style="text-align: left;">Cultivation of oil seeds</td>
+<td style="text-align: right;">5002.8604</td>
+<td style="text-align: left;">M.EUR</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_impacts</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Value Added</td>
+<td style="text-align: left;">US</td>
+<td style="text-align: left;">Cultivation of sugar cane, sugar beet</td>
+<td style="text-align: right;">290.0846</td>
+<td style="text-align: left;">M.EUR</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: left;">ixi</td>
+<td style="text-align: left;">F_impacts</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <blockquote class="blockquote">
 <p><strong>Task</strong>: Construct a query to find the top 5 sectors in the US by CO2 emissions in 2022. Remember to check the column names in <code>exio</code> to find the appropriate emissions flow.</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Query to find top 5 sectors in the US by CO2 emissions in 2022</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>top5_us_sectors <span class="ot">&lt;-</span> co2_data <span class="sc">|&gt;</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2022</span>, region <span class="sc">==</span> <span class="st">&quot;US&quot;</span>, stressor <span class="sc">%like%</span> <span class="st">&quot;%CO2%&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(sector) <span class="sc">|&gt;</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">total_co2 =</span> <span class="fu">sum</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">unit =</span> <span class="fu">first</span>(unit)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total_co2)) <span class="sc">|&gt;</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect</span>()</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(top5_us_sectors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 3
-  sector                            total_co2 unit 
-  &lt;chr&gt;                                 &lt;dbl&gt; &lt;chr&gt;
-1 Production of electricity by coal   1.38e12 kg   
-2 Production of electricity by gas    6.97e11 kg   
-3 Air transport (62)                  1.96e11 kg   
-4 Petroleum Refinery                  1.51e11 kg   
-5 Chemicals nec                       1.03e11 kg   </code></pre>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Query to find top 5 sectors in the US by CO2 emissions in 2022</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>top5_us_sectors <span class="ot">&lt;-</span> co2_data <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2022</span>, region <span class="sc">==</span> <span class="st">&quot;US&quot;</span>, stressor <span class="sc">%like%</span> <span class="st">&quot;%CO2%&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(sector) <span class="sc">|&gt;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">total_co2 =</span> <span class="fu">sum</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">unit =</span> <span class="fu">first</span>(unit)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total_co2)) <span class="sc">|&gt;</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect</span>()</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>top5_us_sectors <span class="sc">|&gt;</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">caption =</span> <span class="st">&quot;Top 5 US Sectors by CO2 Emissions (2022)&quot;</span>,</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Sector&quot;</span>, <span class="st">&quot;Total CO2&quot;</span>, <span class="st">&quot;Unit&quot;</span>),</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Top 5 US Sectors by CO2 Emissions (2022)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Sector</th>
+<th style="text-align: right;">Total CO2</th>
+<th style="text-align: left;">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Production of electricity by coal</td>
+<td style="text-align: right;">1.380196e+12</td>
+<td style="text-align: left;">kg</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Production of electricity by gas</td>
+<td style="text-align: right;">6.967603e+11</td>
+<td style="text-align: left;">kg</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Air transport (62)</td>
+<td style="text-align: right;">1.956016e+11</td>
+<td style="text-align: left;">kg</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Petroleum Refinery</td>
+<td style="text-align: right;">1.512387e+11</td>
+<td style="text-align: left;">kg</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chemicals nec</td>
+<td style="text-align: right;">1.032686e+11</td>
+<td style="text-align: left;">kg</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the top 5 sectors</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>y_unit <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">nrow</span>(top5_us_sectors) <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(top5_us_sectors<span class="sc">$</span>unit[<span class="dv">1</span>])) {</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    top5_us_sectors<span class="sc">$</span>unit[<span class="dv">1</span>]</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;unknown unit&quot;</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top5_us_sectors, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(sector, total_co2), <span class="at">y =</span> total_co2, <span class="at">fill =</span> sector)) <span class="sc">+</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">&quot;Top 5 CO2 Emitting Sectors in the US (2022)&quot;</span>,</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">&quot;Sector&quot;</span>,</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="fu">paste0</span>(<span class="st">&quot;Total CO2 Emissions (&quot;</span>, y_unit, <span class="st">&quot;)&quot;</span>),</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;Sector&quot;</span></span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the top 5 sectors</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>y_unit <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">nrow</span>(top5_us_sectors) <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(top5_us_sectors<span class="sc">$</span>unit[<span class="dv">1</span>])) {</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    top5_us_sectors<span class="sc">$</span>unit[<span class="dv">1</span>]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;unknown unit&quot;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top5_us_sectors, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(sector, total_co2), <span class="at">y =</span> total_co2, <span class="at">fill =</span> sector)) <span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">&quot;Top 5 CO2 Emitting Sectors in the US (2022)&quot;</span>,</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">&quot;Sector&quot;</span>,</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="fu">paste0</span>(<span class="st">&quot;Total CO2 Emissions (&quot;</span>, y_unit, <span class="st">&quot;)&quot;</span>),</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;Sector&quot;</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2389,42 +2617,76 @@ $ matrix   &lt;chr&gt; &quot;F_satellite&quot;, &quot;F_satellite&quot;, &quot;F
 <h2 class="anchored" data-anchor-id="exercise-3-top-5-co2-emitters-in-2022">Exercise 3: Top 5 CO2 Emitters in 2022</h2>
 <p>Find the top 5 countries by total CO2 emissions in 2022.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Query to find top 5 CO2 emitters in 2022</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>top5_emitters_2022 <span class="ot">&lt;-</span> co2_data <span class="sc">|&gt;</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2022</span>, stressor <span class="sc">%like%</span> <span class="st">&quot;%CO2%&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(region) <span class="sc">|&gt;</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">total_co2 =</span> <span class="fu">sum</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">unit =</span> <span class="fu">first</span>(unit)</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total_co2)) <span class="sc">|&gt;</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect</span>()</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(top5_emitters_2022)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 3
-  region total_co2 unit 
-  &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;
-1 CN       1.13e13 kg   
-2 US       3.82e12 kg   
-3 IN       2.72e12 kg   
-4 WM       2.13e12 kg   
-5 WA       2.08e12 kg   </code></pre>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Query to find top 5 CO2 emitters in 2022</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>top5_emitters_2022 <span class="ot">&lt;-</span> co2_data <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2022</span>, stressor <span class="sc">%like%</span> <span class="st">&quot;%CO2%&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(region) <span class="sc">|&gt;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">total_co2 =</span> <span class="fu">sum</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">unit =</span> <span class="fu">first</span>(unit)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total_co2)) <span class="sc">|&gt;</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect</span>()</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>top5_emitters_2022 <span class="sc">|&gt;</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">caption =</span> <span class="st">&quot;Top 5 CO2 Emitting Countries (2022)&quot;</span>,</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Total CO2&quot;</span>, <span class="st">&quot;Unit&quot;</span>),</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Top 5 CO2 Emitting Countries (2022)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Country</th>
+<th style="text-align: right;">Total CO2</th>
+<th style="text-align: left;">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CN</td>
+<td style="text-align: right;">1.131839e+13</td>
+<td style="text-align: left;">kg</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">US</td>
+<td style="text-align: right;">3.816396e+12</td>
+<td style="text-align: left;">kg</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">IN</td>
+<td style="text-align: right;">2.719107e+12</td>
+<td style="text-align: left;">kg</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">WM</td>
+<td style="text-align: right;">2.134371e+12</td>
+<td style="text-align: left;">kg</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">WA</td>
+<td style="text-align: right;">2.079900e+12</td>
+<td style="text-align: left;">kg</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the top 5 emitters</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top5_emitters_2022, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(region, total_co2), <span class="at">y =</span> total_co2, <span class="at">fill =</span> region)) <span class="sc">+</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">&quot;Top 5 CO2 Emitters in 2022&quot;</span>,</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">&quot;Country&quot;</span>,</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="fu">paste0</span>(<span class="st">&quot;Total CO2 Emissions (&quot;</span>, top5_emitters_2022<span class="sc">$</span>unit[<span class="dv">1</span>], <span class="st">&quot;)&quot;</span>),</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;Country&quot;</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the top 5 emitters</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top5_emitters_2022, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(region, total_co2), <span class="at">y =</span> total_co2, <span class="at">fill =</span> region)) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">&quot;Top 5 CO2 Emitters in 2022&quot;</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">&quot;Country&quot;</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="fu">paste0</span>(<span class="st">&quot;Total CO2 Emissions (&quot;</span>, top5_emitters_2022<span class="sc">$</span>unit[<span class="dv">1</span>], <span class="st">&quot;)&quot;</span>),</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;Country&quot;</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
