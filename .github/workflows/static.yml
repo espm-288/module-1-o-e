@@ -31,12 +31,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+      - name: Render Quarto
+        run: quarto render jake_mkdwn.qmd
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
+          # Upload rendered HTML and assets
           path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
