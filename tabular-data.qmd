@@ -2,7 +2,9 @@
 title: "Module 1: Tabular Data"
 subtitle: "Working with larger-than-RAM data using duckdbfs"
 author: "ESPM 288"
-format: html
+format:
+  html:
+    embed-resources: true
 ---
 
 ## Introduction
@@ -93,13 +95,18 @@ top5_us_sectors <- co2_data |>
 print(top5_us_sectors)
 
 # Visualize the top 5 sectors
+y_unit <- if (nrow(top5_us_sectors) > 0 && !is.na(top5_us_sectors$unit[1])) {
+    top5_us_sectors$unit[1]
+} else {
+    "unknown unit"
+}
 ggplot(top5_us_sectors, aes(x = reorder(sector, total_co2), y = total_co2, fill = sector)) +
     geom_col() +
     coord_flip() +
     labs(
         title = "Top 5 CO2 Emitting Sectors in the US (2022)",
         x = "Sector",
-        y = paste0("Total CO2 Emissions (", top5_us_sectors$unit[1], ")"),
+        y = paste0("Total CO2 Emissions (", y_unit, ")"),
         fill = "Sector"
     ) +
     theme_minimal() +
@@ -138,3 +145,5 @@ ggplot(top5_emitters_2022, aes(x = reorder(region, total_co2), y = total_co2, fi
     theme_minimal() +
     theme(legend.position = "none")
 ```
+
+

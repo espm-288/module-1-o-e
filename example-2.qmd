@@ -1,0 +1,136 @@
+```{r}
+library(duckdbfs)
+library(dplyr)
+library(ggplot2)
+
+```
+
+
+```{r}
+# Remote S3 path to EXIOBASE 3 (Source Cooperative)
+
+duckdbfs::duckdb_secrets(
+    key = "",
+    secret = "",
+    endpoint = "s3.amazonaws.com",
+    region = "us-west-2"
+)
+s3_url <- "s3://us-west-2.opendata.source.coop/youssef-harby/exiobase-3/4588235/parquet/**"
+
+# Open the dataset lazily
+exio <- open_dataset(s3_url)
+
+
+```{r}
+exio |>
+    distinct(matrix) |>
+    collect()
+
+
+
+```{r}
+co2 <- exio |>
+    filter(matrix == "F_satellite") |>
+    filter(grepl("CO2|carbon dioxide", stressor, ignore.case = TRUE))
+
+
+```
+
+Identify which regions are the top CO2 emitters
+```{r}
+# Check column names to see what's available
+glimpse(co2)
+
+# Sum CO2 emissions by region
+top_emitters <- co2 |>
+    group_by(region) |>
+    summarise(total_co2 = sum(value, na.rm = TRUE)) |>
+    arrange(desc(total_co2)) |>
+    head(20) |>
+    collect()
+
+# Display top emitters
+top_emitters
+
+# Visualize top 15 emitters
+top_emitters |>
+    head(15) |>
+    ggplot(aes(x = reorder(region, total_co2), y = total_co2)) +
+    geom_col(fill = "steelblue") +
+    coord_flip() +
+    labs(title = "Top 15 CO2 Emitting Regions",
+         x = "Region",
+         y = "Total CO2 Emissions") +
+    theme_minimal()
+```
+
+
+Top 5 CO2 emitting countries over time
+```{r}
+# Get top 5 emitting countries
+top5 <- top_emitters |>
+    head(5) |>
+    pull(region)
+
+# Get CO2 emissions over time for top 5 countries
+top5_over_time <- co2 |>
+    filter(region %in% top5) |>
+    group_by(region, year) |>
+    summarise(total_co2 = sum(value, na.rm = TRUE)) |>
+    collect()
+
+# Plot emissions over time
+top5_over_time |>
+    ggplot(aes(x = year, y = total_co2, color = region)) +
+    geom_line(linewidth = 1) +
+    geom_point(size = 1.5) +
+    labs(title = "CO2 Emissions Over Time: Top 5 Emitting Countries",
+         x = "Year",
+         y = "Total CO2 Emissions",
+         color = "Country") +
+    theme_minimal() +
+    theme(legend.position = "bottom")
+```
+
+
+Top 5 countries with the largest decrease in CO2 emissions
+```{r}
+# Get CO2 emissions by region and year
+co2_by_year <- co2 |>
+    group_by(region, year) |>
+    summarise(total_co2 = sum(value, na.rm = TRUE)) |>
+    collect()
+
+# Calculate change: compare most recent year to earliest year per country
+co2_change <- co2_by_year |>
+    group_by(region) |>
+    arrange(year) |>
+    summarise(
+        first_year = first(year),
+        last_year = last(year),
+        first_co2 = first(total_co2),
+        last_co2 = last(total_co2),
+        change = last(total_co2) - first(total_co2),
+        pct_change = (last(total_co2) - first(total_co2)) / first(total_co2) * 100
+    ) |>
+    arrange(change) |>
+    head(5)
+
+co2_change
+
+# Get the top 5 decreasing countries
+top5_decreasing <- co2_change |> pull(region)
+
+# Plot their emissions over time
+co2_by_year |>
+    filter(region %in% top5_decreasing) |>
+    ggplot(aes(x = year, y = total_co2, color = region)) +
+    geom_line(linewidth = 1) +
+    geom_point(size = 1.5) +
+    labs(title = "Top 5 Countries Decreasing CO2 Emissions",
+         x = "Year",
+         y = "Total CO2 Emissions",
+         color = "Country") +
+    theme_minimal() +
+    theme(legend.position = "bottom")
+```
