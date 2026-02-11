@@ -24,6 +24,7 @@ We will be working with [EXIOBASE 3.8.1](https://source.coop/youssef-harby/exiob
 ```{r}
 library(duckdbfs)
 library(dplyr)
+library(ggplot2)
 
 ```
 
@@ -47,6 +48,20 @@ exio <- open_dataset(s3_url)
 
 # View the schema (column names and types) without reading data
 glimpse(exio)
+
+# For CO2 data specifically, we want the F_satellite matrix
+co2_url <- "s3://us-west-2.opendata.source.coop/youssef-harby/exiobase-3/4588235/parquet/year=*/format=ixi/matrix=F_satellite/"
+
+co2_data <- open_dataset(co2_url)
+
+# View the CO2 data structure
+glimpse(co2_data)
+
+# Preview a few rows - filter for CO2 stressors
+co2_data |>
+    filter(stressor %like% "%CO2%") |>
+    head(10) |>
+    collect()
 ```
 
 ## Exercise 2: Efficient Filtering
@@ -61,3 +76,65 @@ exio |>
 ```
 
 > **Task**: Construct a query to find the top 5 sectors in the US by CO2 emissions in 2022. Remember to check the column names in `exio` to find the appropriate emissions flow.
+```{r}
+# Query to find top 5 sectors in the US by CO2 emissions in 2022
+top5_us_sectors <- co2_data |>
+    filter(year == 2022, region == "US", stressor %like% "%CO2%") |>
+    group_by(sector) |>
+    summarize(
+        total_co2 = sum(value, na.rm = TRUE),
+        unit = first(unit)
+    ) |>
+    arrange(desc(total_co2)) |>
+    head(5) |>
+    collect()
+
+# Display results
+print(top5_us_sectors)
+
+# Visualize the top 5 sectors
+ggplot(top5_us_sectors, aes(x = reorder(sector, total_co2), y = total_co2, fill = sector)) +
+    geom_col() +
+    coord_flip() +
+    labs(
+        title = "Top 5 CO2 Emitting Sectors in the US (2022)",
+        x = "Sector",
+        y = paste0("Total CO2 Emissions (", top5_us_sectors$unit[1], ")"),
+        fill = "Sector"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "none")
+```
+## Exercise 3: Top 5 CO2 Emitters in 2022
+
+Find the top 5 countries by total CO2 emissions in 2022.
+
+```{r}
+# Query to find top 5 CO2 emitters in 2022
+top5_emitters_2022 <- co2_data |>
+    filter(year == 2022, stressor %like% "%CO2%") |>
+    group_by(region) |>
+    summarize(
+        total_co2 = sum(value, na.rm = TRUE),
+        unit = first(unit)
+    ) |>
+    arrange(desc(total_co2)) |>
+    head(5) |>
+    collect()
+
+# Display results
+print(top5_emitters_2022)
+
+# Visualize the top 5 emitters
+ggplot(top5_emitters_2022, aes(x = reorder(region, total_co2), y = total_co2, fill = region)) +
+    geom_col() +
+    coord_flip() +
+    labs(
+        title = "Top 5 CO2 Emitters in 2022",
+        x = "Country",
+        y = paste0("Total CO2 Emissions (", top5_emitters_2022$unit[1], ")"),
+        fill = "Country"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "none")
+```

@@ -1,0 +1,135 @@
+---
+title: "Module 1: Tabular Data"
+subtitle: "Working with larger-than-RAM data using duckdbfs"
+author: "Jake Vargas"
+format: html
+---
+
+## Case Study: Global Supply Chains
+**Data description:**
+- **Coverage**: 44 countries + 5 rest-of-world regions.
+- **Timeframe**: 1995–2022.
+- **Content**: Economic transactions (Z matrix), final demand (Y matrix), and environmental stressors (F matrix).
+- **Format**: Cloud-optimized Parquet, partitioned by year and matrix type.
+
+## Setup
+
+```{r}
+library(duckdbfs)
+library(dplyr)
+library(tidyverse)
+```
+
+```{r}
+# Remote S3 path to EXIOBASE 3 (Source Cooperative)
+
+duckdbfs::duckdb_secrets(
+    key = "",
+    secret = "",
+    endpoint = "s3.amazonaws.com",
+    region = "us-west-2"
+)
+s3_url <- "s3://us-west-2.opendata.source.coop/youssef-harby/exiobase-3/4588235/parquet/**"
+
+# Open the dataset lazily
+exio <- open_dataset(s3_url)
+
+# View the schema (column names and types) without reading data
+glimpse(exio)
+```
+
+## Exercise 2: Efficient Filtering
+
+The dataset is large. We should filter *before* collecting any data into R.
+
+```{r}
+exio |>
+    filter(year == 2022, region == "US") |>
+    head() |> # view the first 6 rows
+    collect()
+```
+
+> **Task**: Construct a query to find the top 5 sectors in the US by CO2 emissions in 2022. Remember to check the column names in `exio` to find the appropriate emissions flow.
+
+The first thing I need to do is look at what unique stressors are in the f impacts matrix. This is important to me because I want to know if there are multiple stressors measured for CO2. For example, combustion, vs cement manufacturing. 
+
+```{r}
+distinct_units <- exio %>%
+  filter(matrix == "F_impacts") %>%
+  distinct(stressor) %>%
+  collect()
+print(distinct_units, n = 50) 
+```
+
+Now I know that there are in fact multiple ways this matrix measures CO2. Before I get into that, I want to know what the total emissions are for the listed parameters. This includes methane and others. 
+
+```{r}
+exio |>
+  filter(matrix == "F_impacts", year == 2022, region == "US") |>
+  group_by(sector) |>
+  summarise(total_emissions = sum(value, na.rm = TRUE)) |>
+  arrange(desc(total_emissions)) |>
+   collect() |>
+  print(n=5)
+```
+
+Methane was not a lucky guess. I already knew since I ran the code. Maybe I should stop eating beef! 
+
+#```{r}
+#for_pretty  %>%
+#  distinct(unit) %>%
+#  print(n = 50)
+ 
+#```
+
+I am a little worried that even though we are working with a matrix that the different CO2 stressors are going to be measured in a different unit so lets check that out. 
+```{r}
+for_pretty <-exio |>
+  filter(matrix == "F_impacts", year == 2022, region == "US", str_detect(stressor, "CO2")) |>
+  group_by(sector) |>
+  summarise(total_emissions = sum(value, na.rm = TRUE)) |>
+  arrange(desc(total_emissions))|>
+   collect() |>
+ slice_head(n=5)
+ print(for_pretty)
+```
+
+Find out the top producing region 
+
+```{r}
+look_at_sector <- exio |> 
+    dplyr::filter(matrix == "F_impacts", year == "2022") |>
+    group_by(region) |>
+    summarise(total_emissions = sum(value, na.rm = TRUE)) |>
+    arrange(desc(total_emissions)) |>
+    collect() |>
+    print(n = 5)
+   
+```
+
+
+Looks Good enough to me! There are two unites. One Gg CO2 and another unit that I am assuming is the equivilant. I won't know though without more background. Now we know based on the code block above that Production of electricity by coal  was the top CO2 producer in the US in 2022. A little backgound shows that Gg is gigagrams. A unit used for measuing very large amounts of CO2. 
+
+# Visualize 
+Here I am going to start visulizing the data 
+```{r}
+library(ggplot2)
+library(scales)
+
+GG_pretty <- for_pretty |>
+  ggplot(aes(x = reorder(sector, total_emissions), y = total_emissions, fill = sector)) +
+  geom_col(show.legend = FALSE) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Top 5 US Sectors by CO2 Emissions (2022)",
+    x = "Sector",
+    y = "Total CO2 Emissions (Gg)") +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    axis.text.x = element_text(angle = 0, vjust = 0.5),
+    axis.text.y = element_text(face = "bold"),
+    panel.grid.major.y = element_blank()
+  )
+GG_pretty
+```
