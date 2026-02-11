@@ -1,0 +1,82 @@
+title: "Module 1: Tabular Data"
+subtitle: "Working with larger-than-RAM data using duckdbfs"
+author: "ESPM 288"
+format: html
+
+```{r}
+# Remote S3 path to EXIOBASE 3 (Source Cooperative)
+library(duckdbfs)
+library(dplyr)
+library(ggplot2)
+
+duckdbfs::duckdb_secrets(
+    key = "",
+    secret = "",
+    endpoint = "s3.amazonaws.com",
+    region = "us-west-2"
+)
+s3_url <- "s3://us-west-2.opendata.source.coop/youssef-harby/exiobase-3/4588235/parquet/**"
+
+# Open the dataset lazily
+exio <- open_dataset(s3_url)
+```
+
+I want to identity CO2 production country by country over time. Open the F_matrix table only in the data, lets look at the first few rows 
+
+
+``` {r}
+# Filter for F_matrix table only - CO2 stressors
+exio |>
+filter(matrix == "F_satellite") |>
+  filter(grepl("CO2", stressor, ignore.case = TRUE)) |>
+  distinct (stressor) |>
+  collect ()
+```
+
+```{r}
+# Get top 5 countries by CO2 emissions
+top_co2_countries <- exio |>
+  filter(matrix == "F_satellite") |>
+  filter(grepl("CO2", stressor, ignore.case = TRUE)) |>
+  group_by(region) |>
+  summarise(total_co2 = sum(value, na.rm = TRUE)) |>
+  arrange(desc(total_co2)) |>
+  head(5) |>
+  collect()
+
+top_co2_countries
+```
+
+```{r}
+# Get emissions over time for the top 5 countries
+top_regions <- top_co2_countries$region
+
+emissions_over_time <- exio |>
+  filter(matrix == "F_satellite") |>
+  filter(grepl("CO2", stressor, ignore.case = TRUE)) |>
+  filter(region %in% top_regions) |>
+  group_by(region, year) |>
+  summarise(total_co2 = sum(value, na.rm = TRUE), .groups = 'drop') |>
+  collect()
+
+# Plot emissions over time
+p <- ggplot(emissions_over_time, aes(x = year, y = total_co2, color = region)) +
+  geom_line(linewidth = 1) +
+  geom_point() +
+  labs(
+    title = "CO2 Emissions Over Time for Top 5 Countries",
+    x = "Year",
+    y = "Total CO2 Emissions",
+    color = "Country/Region"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+# Save plot to file
+ggsave("co2_emissions_plot.png", plot = p, width = 10, height = 6, dpi = 300)
+
+# Display plot
+print(p)
+
+
+```
