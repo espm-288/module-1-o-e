@@ -5,6 +5,38 @@ author: "Jake Vargas"
 format: html
 ---
 
+---
+title: "Module 1: Tabular Data"
+subtitle: "Working with larger-than-RAM data using duckdbfs"
+author: "Jake Vargas"
+format: html
+---
+
+```{=html}
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5em 0;
+}
+thead tr {
+  background-color: #2c3e50;
+  color: #fff;
+  font-weight: bold;
+}
+th, td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+}
+tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+tbody tr:hover {
+  background-color: #e2e8f0;
+}
+</style>
+```
+
 ## Case Study: Global Supply Chains
 **Data description:**
 - **Coverage**: 44 countries + 5 rest-of-world regions.
