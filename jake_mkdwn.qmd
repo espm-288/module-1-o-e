@@ -17,7 +17,7 @@ format: html
 ```{r}
 library(duckdbfs)
 library(dplyr)
-
+library(tidyverse)
 ```
 
 ```{r}
@@ -91,7 +91,22 @@ for_pretty <-exio |>
   arrange(desc(total_emissions))|>
    collect() |>
  slice_head(n=5)
+ print(for_pretty)
 ```
+
+Find out the top producing region 
+
+```{r}
+look_at_sector <- exio |> 
+    dplyr::filter(matrix == "F_impacts", year == "2022") |>
+    group_by(region) |>
+    summarise(total_emissions = sum(value, na.rm = TRUE)) |>
+    arrange(desc(total_emissions)) |>
+    collect() |>
+    print(n = 5)
+   
+```
+
 
 Looks Good enough to me! There are two unites. One Gg CO2 and another unit that I am assuming is the equivilant. I won't know though without more background. Now we know based on the code block above that Production of electricity by coal  was the top CO2 producer in the US in 2022. A little backgound shows that Gg is gigagrams. A unit used for measuing very large amounts of CO2. 
 
