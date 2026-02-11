@@ -1,5 +1,8 @@
 # Module 1: Tabular Data
 
+[WEBSITE](https://espm-288.github.io/module-1-o-e/tabular-data.html)
+
+
 ## Overview
 ANTS ARE COOL; WE ARE JOE ; JAKE IS CONFUSED, SO LOST
 This module explores high-performance workflows for working with larger-than-RAM tabular datasets using `duckdbfs` and DuckDB's streaming capabilities.
