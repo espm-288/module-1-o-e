@@ -17,7 +17,9 @@ format: html
 ```{r}
 library(duckdbfs)
 library(dplyr)
-library(tidyverse)
+library(stringr)
+library(ggplot2)
+library(scales)
 ```
 
 ```{r}
